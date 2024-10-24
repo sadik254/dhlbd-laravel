@@ -6,11 +6,22 @@ use App\Http\Controllers\OrderItemsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\ProductController;
 
 // Authentication Routes
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+
+// For test this routes are without middleware
+// Route::get('/users', [UserController::class, 'index'])->name('users.index');
+//     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+//     Route::post('/users', [UserController::class, 'store'])->name('users.store');
+//     Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+//     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+//     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+//     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 // All routes that require authentication
 Route::middleware(['auth'])->group(function () {
@@ -31,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/order-items', [OrderItemsController::class, 'store'])->name('order_items.store');
 
     // User Management
-    // Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class);
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
@@ -48,4 +59,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/buyers/{id}/edit', [BuyerController::class, 'edit'])->name('buyers.edit');
     Route::put('/buyers/{id}', [BuyerController::class, 'update'])->name('buyers.update');
     Route::delete('/buyers/{id}', [BuyerController::class, 'destroy'])->name('buyers.destroy');
+
+    // Product Routes
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
 });
