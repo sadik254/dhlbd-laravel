@@ -77,16 +77,10 @@
                     id="layout-navbar">
 
                     <ul class="menu-inner py-1 align-items-center">
-                        <!-- Dashboard -->
-                        <li class="menu-item">
-                            <a href="{{ route('loginpage') }}" class="menu-link">
-                                <div data-i18n="Analytics">Login</div>
-                            </a>
-                        </li>
 
                         <li class="menu-item">
-                            <a href="" class="menu-link">
-                                <div data-i18n="Analytics">Basic Info</div>
+                            <a href="{{ route('buyerindex') }}" class="menu-link">
+                                <div data-i18n="Analytics">Buyer Info</div>
                             </a>
                         </li>
 
@@ -97,37 +91,37 @@
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{ route('breakdowninfo') }}" class="menu-link">
-                                <div data-i18n="Analytics">Breakdown Info(Sample)</div>
+                            <a href="{{ route('productindex') }}" class="menu-link">
+                                <div data-i18n="Analytics">Product Info</div>
                             </a>
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{ route('breakdowninfo') }}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Analytics">Fabric Info</div>
                             </a>
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{ route('breakdowninfo') }}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Analytics">Trims</div>
                             </a>
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{ route('breakdowninfo') }}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Analytics">Fabric Process Flow</div>
                             </a>
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{ route('breakdowninfo') }}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Analytics">Others Cost</div>
                             </a>
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{ route('breakdowninfo') }}" class="menu-link">
+                            <a href="" class="menu-link">
                                 <div data-i18n="Analytics">Budget Costing</div>
                             </a>
                         </li>

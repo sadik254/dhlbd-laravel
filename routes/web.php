@@ -36,7 +36,12 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('dash', [DashController::class, 'index'])->name('index');
-Route::get('login-page', [DashController::class, 'LoginPage'])->name('loginpage');
 Route::get('dhl-page', [DashController::class, 'DhlPage'])->name('dhlpage');
 Route::get('basic-info', [DashController::class, 'BasicInfo'])->name('basicinfo');
 Route::get('breakdown-info', [DashController::class, 'BreakdownInfo'])->name('breakdowninfo');
+
+Route::get('buyer-index', [DashController::class, 'BuyerIndex'])->name('buyerindex');
+Route::get('add-buyer', [DashController::class, 'AddBuyer'])->name('addbuyer');
+Route::get('edit-buyer', [DashController::class, 'EditBuyer'])->name('editbuyer');
+
+Route::get('product-index', [DashController::class, 'ProductIndex'])->name('productindex');
