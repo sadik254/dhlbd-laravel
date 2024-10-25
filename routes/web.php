@@ -5,7 +5,7 @@ use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\OrderItemsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\DashController;
 
 // Purchase Orders
 Route::get('/purchase-orders', [PurchaseOrderController::class, 'index'])->name('purchase_order.index');
@@ -18,7 +18,7 @@ Route::post('/purchase-order', [PurchaseOrderController::class, 'store'])->name(
 Route::get('/order-items/create', [OrderItemsController::class, 'create'])->name('order_items.create');
 Route::post('/order-items', [OrderItemsController::class, 'store'])->name('order_items.store');
 
-// User 
+// User
 Route::resource('users', UserController::class);
 
 // Auth
@@ -33,3 +33,10 @@ Route::middleware('auth')->group(function () {
         return view('dashboard'); // Example protected page
     })->name('dashboard');
 });
+
+
+Route::get('dash', [DashController::class, 'index'])->name('index');
+Route::get('login-page', [DashController::class, 'LoginPage'])->name('loginpage');
+Route::get('dhl-page', [DashController::class, 'DhlPage'])->name('dhlpage');
+Route::get('basic-info', [DashController::class, 'BasicInfo'])->name('basicinfo');
+Route::get('breakdown-info', [DashController::class, 'BreakdownInfo'])->name('breakdowninfo');
