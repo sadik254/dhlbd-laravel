@@ -5,7 +5,7 @@ use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\OrderItemsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashController;
+
 
 // Purchase Orders
 Route::get('/purchase-orders', [PurchaseOrderController::class, 'index'])->name('purchase_order.index');
@@ -27,21 +27,21 @@ Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-// Protected routes that require authentication
-Route::middleware('auth')->group(function () {
+
+// For test this routes are without middleware
+// Route::get('/users', [UserController::class, 'index'])->name('users.index');
+//     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+//     Route::post('/users', [UserController::class, 'store'])->name('users.store');
+//     Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+//     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+//     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+//     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+// All routes that require authentication
+Route::middleware(['auth'])->group(function () {
+
+    // Dashboard
     Route::get('dashboard', function () {
-        return view('dashboard'); // Example protected page
+        return view('dashboard');
     })->name('dashboard');
 });
-
-
-Route::get('dash', [DashController::class, 'index'])->name('index');
-Route::get('dhl-page', [DashController::class, 'DhlPage'])->name('dhlpage');
-Route::get('basic-info', [DashController::class, 'BasicInfo'])->name('basicinfo');
-Route::get('breakdown-info', [DashController::class, 'BreakdownInfo'])->name('breakdowninfo');
-
-Route::get('buyer-index', [DashController::class, 'BuyerIndex'])->name('buyerindex');
-Route::get('add-buyer', [DashController::class, 'AddBuyer'])->name('addbuyer');
-Route::get('edit-buyer', [DashController::class, 'EditBuyer'])->name('editbuyer');
-
-Route::get('product-index', [DashController::class, 'ProductIndex'])->name('productindex');
