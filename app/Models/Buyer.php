@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Buyer extends Model
 {
+    use HasFactory;
+    
     protected $table = 'buyers';
 
     protected $fillable = [
@@ -22,6 +25,8 @@ class Buyer extends Model
         'country',
         'instructions',
     ];
+
+    
 
     
 }

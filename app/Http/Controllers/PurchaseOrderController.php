@@ -18,7 +18,7 @@ class PurchaseOrderController extends Controller
     // Store a new Purchase Order
     public function store(Request $request)
     {
-        // Define your validation rules
+        // Define validation rules for PurchaseOrder
         $validator = Validator::make($request->all(), [
             'po_number' => 'required|string|max:255|unique:purchase_orders',
             'style_name_no' => 'nullable|string|max:255',
@@ -32,15 +32,41 @@ class PurchaseOrderController extends Controller
             'excess_cut' => 'nullable|string|max:255',
         ]);
 
-        // If validation fails
+        // If PurchaseOrder validation fails
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
         // Create a new Purchase Order
-        PurchaseOrder::create($request->all());
+        $purchaseOrder = PurchaseOrder::create($request->all());
 
-        return redirect()->route('purchase_order.index')->with('success', 'Purchase Order created successfully!');
+        // Loop through each OrderItem in the request
+        foreach ($request->order_items as $orderItemData) {
+            // Validate each OrderItem
+            $itemValidator = Validator::make($orderItemData, [
+                'sl_no' => 'nullable|string|max:255',
+                'color' => 'nullable|string|max:255',
+                'item_name' => 'nullable|string|max:255',
+                'style_article_no' => 'nullable|string|max:255',
+                'lab_dip_no' => 'nullable|string|max:255',
+                'approve_option' => 'nullable|string|max:255',
+                'match_ref' => 'nullable|string|max:255',
+                '9_12_qty' => 'nullable|string|max:255',
+                '12_18_qty' => 'nullable|string|max:255',
+                // Add any other OrderItem validation rules as needed
+            ]);
+
+            // If OrderItem validation fails, skip this item (optional)
+            if ($itemValidator->fails()) {
+                continue;
+            }
+
+            // Add the PurchaseOrder ID to the OrderItem data and save
+            $orderItemData['purchase_order_no'] = $purchaseOrder->po_number;
+            OrderItem::create($orderItemData);
+        }
+
+        return redirect()->route('purchase_order.index')->with('success', 'Purchase Order and Order Items created successfully!');
     }
 
     // Show a list of Purchase Orders with pagination
@@ -101,6 +127,16 @@ class PurchaseOrderController extends Controller
         $purchaseOrder->delete();
 
         return redirect()->route('purchase_order.index')->with('success', 'Purchase Order deleted successfully!');
+    }
+
+    public function dhlOrder()
+    {
+        return view('purchase_order.dhl_order'); // Ensure this view exists
+    }
+
+    public function shipmentDetails()
+    {
+        return view('purchase_order.shipment_details'); // Ensure this view exists
     }
 }
 

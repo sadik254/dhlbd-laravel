@@ -7,6 +7,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DhlOrderController;
+
+
+Route::get('/', function () {
+    return redirect('/users');
+})->middleware('auth');
 
 // Authentication Routes
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -27,7 +33,7 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 
     // Dashboard
-    Route::get('dashboard', function () {
+    Route::get('/dashboard', function () {
         return view('dashboard'); 
     })->name('dashboard');
 
@@ -35,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/purchase-orders', [PurchaseOrderController::class, 'index'])->name('purchase_order.index');
     Route::get('/purchase-order/create', [PurchaseOrderController::class, 'create'])->name('purchase_order.create');
     Route::post('/purchase-order', [PurchaseOrderController::class, 'store'])->name('purchase_order.store');
+
+    Route::get('/dhl-order', [PurchaseOrderController::class, 'dhlOrder'])->name('dhl.order');
+    Route::get('/shipment-details', [PurchaseOrderController::class, 'shipmentDetails'])->name('shipment.details');
 
     // Order Items
     Route::get('/order-items', [OrderItemsController::class, 'index'])->name('order_items.index');
@@ -68,5 +77,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    // DHL Routes
+    Route::get('/dhlorders', [DhlOrderController::class, 'index'])->name('dhl_orders.index');
+    Route::get('/dhlorders/create', [DhlOrderController::class, 'create'])->name('dhl_orders.create');
+    Route::post('/dhlorders', [DhlOrderController::class, 'store'])->name('dhl_orders.store');
 
 });

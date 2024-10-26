@@ -33,7 +33,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             // Redirect to intended page or dashboard
-            return redirect()->intended('dashboard')->with('success', 'You are logged in!');
+            return redirect()->intended('users')->with('success', 'You are logged in!');
         }
 
         // Return back with errors if login fails
