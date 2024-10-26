@@ -1,4 +1,4 @@
-@extends('dash.layouts.temp')
+@extends('layouts.app')
 
 @section('content')
 <div class="container mt-4 py-2" style="background: rgb(245, 245, 245)">

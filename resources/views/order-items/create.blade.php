@@ -1,4 +1,4 @@
-@extends('dash.layouts.temp')
+@extends('layouts.app')
 
 @section('content')
     <div class="container mt-4 py-2" style="background: rgb(245, 245, 245)">
@@ -6,106 +6,66 @@
             <div class="row g-3">
                 <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Order No</label>
-                        <input type="text" class="form-control" name="order_no" id="order_no" placeholder="Order no">
+                        <label for="" class="fw-bold">Purchase Order No</label>
+                        <input type="text" class="form-control" name="purchase_order_no" id="purchase_order_no" placeholder="Order no">
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">PO Name/Ref.</label>
-                        <input type="text" class="form-control" name="po_name" id="po_name" placeholder="PO Name/Ref.">
+                        <label for="" class="fw-bold">Sl No</label>
+                        <input type="number" class="form-control" name="sl_no" id="sl_no" placeholder="PO Name/Ref.">
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Contact Person</label>
-                        <input type="text" class="form-control" name="contact_person" id="contact_person" placeholder="Contact person">
+                        <label for="" class="fw-bold">Color</label>
+                        <input type="text" class="form-control" name="color" id="color" placeholder="Contact person">
                     </div>
                 </div>
-            </div>
-
-            <div class="mt-4">
-                <h4>DHL Dimension Info</h4>
-            </div>
-            <div class="row g-3">
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Dimension Info</label>
-                        <input type="text" class="form-control" name="dimension_info" id="dimension_info" placeholder="">
+                        <label for="" class="fw-bold">Style Article No</label>
+                        <input type="text" class="form-control" name="style_article_no" id="style_article_no" placeholder="Contact person">
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Dimension Length</label>
-                        <input type="text" class="form-control" name="dimension_lenght" id="dimension_lenght" placeholder="">
+                        <label for="" class="fw-bold">Lab Dip No</label>
+                        <input type="text" class="form-control" name="lab_dip_no" id="lab_dip_no" placeholder="Contact person">
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Dimension Width</label>
-                        <input type="text" class="form-control" name="dimension_width" id="dimension_width" placeholder="">
+                        <label for="" class="fw-bold">Approve Option</label>
+                        <select class="form-select" id="approve_option" name="approve_option" aria-label="Default select example">
+                            <option selected>Select Options</option>
+                                <option value="">Yes</option>
+                                <option value="">No</option>
+                          </select>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Dimension Height</label>
-                        <input type="text" class="form-control" name="dimension_height" id="dimension_height" placeholder="">
+                        <label for="" class="fw-bold">Match Ref</label>
+                        <input type="text" class="form-control" name="match_ref" id="match_ref" placeholder="Contact person">
                     </div>
                 </div>
-            </div>
-
-            <div class="mt-4">
-                <h4>DHL Weight Info</h4>
-            </div>
-            <div class="row g-3">
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Weight Unit</label>
-                        <input type="text" class="form-control" name="weight_unit" id="weight_unit" placeholder="">
+                        <label for="" class="fw-bold">Order Qty</label>
+                        <input type="text" class="form-control" name="order_qty" id="order_qty" placeholder="Contact person">
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Net Weight</label>
-                        <input type="text" class="form-control" name="net_weight" id="net_weight" placeholder="">
+                        <label for="" class="fw-bold">Order Ratio</label>
+                        <input type="text" class="form-control" name="order_ratio" id="order_ratio" placeholder="Contact person">
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Gross Weight</label>
-                        <input type="text" class="form-control" name="gross_weight" id="gross_weight" placeholder="">
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Item Amount</label>
-                        <input type="text" class="form-control" name="item_ammount" id="item_ammount" placeholder="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-3 mt-5">
-                <div class="col-6 col-md-3">
-                    <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Order Type</label>
-                        <select class="form-select" id="product_category_id" name="product_category_id"
-                            aria-label="Default select example">
-                            <option value="">Normal</option>
-                            <option value="">Normal</option>
-                            <option value="">Normal</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Confirm/Bangking Order:</label>
-                        <input type="text" class="form-control" name="confirm_order" id="confirm_order" placeholder="">
-                    </div>
-                </div>
-                <div class="col-6 col-md-6">
-                    <div class="d-flex flex-column">
-                        <label for="" class="fw-bold">Remarks</label>
-                        <input type="text" class="form-control" name="remarks" id="remarks" placeholder="">
+                        <label for="" class="fw-bold">Order Total</label>
+                        <input type="text" class="form-control" name="order_total" id="order_total" placeholder="Contact person">
                     </div>
                 </div>
             </div>
@@ -153,61 +113,91 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 7</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 8</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 9</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 10</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 11</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 12</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 13</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 14</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 15</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="item-card">
                         <input type="checkbox" id="item6" class="form-check-input">
-                        <label for="item6" class="form-check-label">Item 6</label>
+                        <label for="item6" class="form-check-label">Item 16</label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="item-card">
+                        <input type="checkbox" id="item6" class="form-check-input">
+                        <label for="item6" class="form-check-label">Item 17</label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="item-card">
+                        <input type="checkbox" id="item6" class="form-check-input">
+                        <label for="item6" class="form-check-label">Item 18</label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="item-card">
+                        <input type="checkbox" id="item6" class="form-check-input">
+                        <label for="item6" class="form-check-label">Item 19</label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="item-card">
+                        <input type="checkbox" id="item6" class="form-check-input">
+                        <label for="item6" class="form-check-label">Item 20</label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="item-card">
+                        <input type="checkbox" id="item6" class="form-check-input">
+                        <label for="item6" class="form-check-label">Item 21</label>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-@extends('dash.layouts.temp')
+@extends('layouts.app')
 
 @section('content')
     <style>
@@ -29,9 +29,9 @@
 
     <div class="mt-3">
         <div class="d-flex justify-content-end align-items-center">
-            <a href="{{ route('addbuyer') }}" class="bg-success text-white px-3 py-2 rounded a-tag">
+            <a href="{{ route('buyers.create') }}" class="bg-success text-white px-3 py-2 rounded a-tag">
                 <i class="bi bi-plus-lg"></i>
-                <span>Add New Product</span>
+                <span>Create Buyer</span>
             </a>
         </div>
 
@@ -73,7 +73,7 @@
                         <td>
                             <div class="col-6 col-md-6 col-lg-1 text-center">
                                 <div class="d-flex justify-content-around align-items-center h-100 gap-1">
-                                    <a href="{{ route('editbuyer') }}">
+                                    <a href="{{ route('buyers.edit') }}">
                                         <i class="bi bi-pencil-square bg-success text-white px-2 py-1 rounded copy-btn" title="Copy"
                                         onclick="copyRow(this)"></i>
                                     </a>
@@ -102,7 +102,7 @@
                         <td>
                             <div class="col-6 col-md-6 col-lg-1 text-center">
                                 <div class="d-flex justify-content-around align-items-center h-100 gap-1">
-                                    <a href="{{ route('editbuyer') }}">
+                                    <a href="{{ route('buyers.edit') }}">
                                         <i class="bi bi-pencil-square bg-success text-white px-2 py-1 rounded copy-btn" title="Copy"
                                         onclick="copyRow(this)"></i>
                                     </a>

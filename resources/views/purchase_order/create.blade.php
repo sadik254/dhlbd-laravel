@@ -1,97 +1,105 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('title', 'Purchase Orders')
 @section('header', 'Purchase Order List')
 
 @section('content')
-<form action="{{ route('purchase_order.store') }}" method="POST">
-    @csrf
-    <div>
-        <label for="po_number">PO Number</label>
-        <input type="text" name="po_number" id="po_number" required>
-    </div>
-    
-    <div>
-        <label for="style_name_no">Style Name/No</label>
-        <input type="text" name="style_name_no" id="style_name_no" required>
-    </div>
-    
-    <div>
-        <label for="unit_price">Unit Price</label>
-        <input type="text" name="unit_price" id="unit_price">
-    </div>
-    
-    <div>
-        <label for="order_receive_date">Order Receive Date</label>
-        <input type="date" name="order_receive_date" id="order_receive_date" required>
-    </div>
-    
-    <div>
-        <label for="shipment_date">Shipment Date</label>
-        <input type="date" name="shipment_date" id="shipment_date" required>
-    </div>
-    
-    <div>
-        <label for="destination">Destination</label>
-        <input type="text" name="destination" id="destination" required>
-    </div>
-    
-    <div>
-        <label for="delivery_at">Delivery At</label>
-        <input type="text" name="delivery_at" id="delivery_at" required>
-    </div>
-    
-    <div>
-        <label for="order_qty">Order Quantity</label>
-        <input type="text" name="order_qty" id="order_qty">
-    </div>
-    
-    <div>
-        <label for="breakdown_type">Breakdown Type</label>
-        <input type="text" name="breakdown_type" id="breakdown_type" required>
-    </div>
-    
-    <div>
-        <label for="excess_cut">Excess Cut</label>
-        <input type="text" name="excess_cut" id="excess_cut">
-    </div>
+<div class="mt-4">
+    <form action="{{ route('purchase_order.store') }}" method="POST">
+        @csrf
+        <div class="py-4" style="background: rgb(230, 243, 255)">
+            <div class="row g-3 text-center px-2">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="d-flex flex-column">
+                        <label for="">P/O <span class="text-danger fw-bold">(Single P/O Only)</span></label>
+                        <input type="text" class="form-control" name="po_number" id="po_number" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="d-flex flex-column">
+                        <label for="">Style Name/No</label>
+                        <input type="text" class="form-control" name="style_name_no" id="style_name_no" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="d-flex flex-column">
+                        <label for="">Unit Price($)</label>
+                        <input type="text" class="form-control" name="unit_price" id="unit_price" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="d-flex flex-column">
+                        <label for="">Order Rcv. Date</label>
+                        <input type="date" class="form-control" name="order_receive_date" id="order_receive_date" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="d-flex flex-column">
+                        <label for="">Shipment Date</label>
+                        <input type="date" class="form-control" name="shipment_date" id="shipment_date" placeholder="">
+                    </div>
+                </div>
+            </div>
 
-    <h3>Order Items</h3>
-    <div id="order-items-container">
-        <div class="order-item">
-            <h4>Order Item</h4>
-            <label for="color">Color</label>
-            <input type="text" name="order_items[0][color]" id="color">
-            
-            <label for="item_name">Item Name</label>
-            <input type="text" name="order_items[0][item_name]" id="item_name">
-            
-            <!-- Add more fields as necessary -->
+            <div class="row g-3 text-center mt-1 px-2">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="d-flex flex-column">
+                        <label for="">Destination</label>
+                        <input type="text" class="form-control" name="destination" id="destination" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="d-flex flex-column">
+                        <label for="">Delivery At</label>
+                        <input type="text" class="form-control" name="delivery_at" id="delivery_at" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="d-flex flex-column">
+                        <label for="">Order Qty</label>
+                        <input type="text" class="form-control" name="order_qty" id="order_qty" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="d-flex flex-column">
+                        <label for="">Breakdown Type</label>
+                        <input type="text" class="form-control" name="breakdown_type" id="breakdown_type" placeholder="">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                    <div class="d-flex flex-column">
+                        <label for="">Excess Cut(%)</label>
+                        <input type="text" class="form-control" name="excess_cut" id="excess_cut" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="bg-success text-white border-0 rounded px-2 py-1">Send Info</button>
+            </div>
+
         </div>
-    </div>
-    
-    <button type="button" id="add-order-item">Add Another Order Item</button>
-    <button type="submit">Create Purchase Order</button>
-</form>
+    </form>
+</div>
 
-<script>
-    document.getElementById('add-order-item').addEventListener('click', function() {
-        const container = document.getElementById('order-items-container');
-        const index = container.getElementsByClassName('order-item').length;
-        
-        const newItem = `
+    <script>
+        document.getElementById('add-order-item').addEventListener('click', function() {
+            const container = document.getElementById('order-items-container');
+            const index = container.getElementsByClassName('order-item').length;
+
+            const newItem = `
             <div class="order-item">
                 <h4>Order Item</h4>
                 <label for="color">Color</label>
                 <input type="text" name="order_items[${index}][color]" id="color">
-                
+
                 <label for="item_name">Item Name</label>
                 <input type="text" name="order_items[${index}][item_name]" id="item_name">
-                
+
                 <!-- Add more fields as necessary -->
             </div>
         `;
-        
-        container.insertAdjacentHTML('beforeend', newItem);
-    });
-</script>
+
+            container.insertAdjacentHTML('beforeend', newItem);
+        });
+    </script>
 @endsection
