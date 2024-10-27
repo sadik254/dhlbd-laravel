@@ -206,7 +206,7 @@ class DhlOrderController extends Controller
     // Send request to the DHL API
     $apiResponse = Http::withHeaders([
         'Accept' => 'application/json',
-        'Authorization' => 'Basic YXBSMnVMNnJGM2FNN3Q6TV4wZFUjMHdXITlvVCMzaw==',
+        'Authorization' => 'Basic ',
         'Content-Type' => 'application/json',
     ])->post('https://express.api.dhl.com/mydhlapi/test/shipments', $payload);
 
